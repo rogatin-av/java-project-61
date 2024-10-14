@@ -18,7 +18,7 @@ public class App {
                 Cli.greeting();
                 break;
             case 2:
-                Even.play();
+                Even.start();
                 break;
             default:
                 // for checkstyle
