@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 public class Even implements GameInterface {
     private String correctAnswer;
 
@@ -12,7 +14,7 @@ public class Even implements GameInterface {
     }
 
     public String getQuestion() {
-        var num = (int) (Math.random() * 100 + 1);
+        var num = Engine.generateRandomInRange(1, 99);
 
         setCorrectAnswer(num);
 
