@@ -36,6 +36,7 @@ public class Engine {
     private static void play(int questCount) {
 
         for (var i = 1; i <= questCount; i++) {
+
             System.out.println("Question: " + game.getQuestion());
             System.out.print("Your answer: ");
             String userAnswer = scanner.next();
@@ -56,5 +57,20 @@ public class Engine {
         if (isWin) {
             System.out.println("Congratulations, " + userName + "!");
         }
+    }
+
+    public static int gcd(int a, int b) {
+
+        while (b != 0) {
+            int tmp = a % b;
+            a = b;
+            b = tmp;
+        }
+
+        return a;
+    }
+
+    public static int generateRandomInRange(int start, int end) {
+        return (int) (Math.random() * (end - start + 1) + start);
     }
 }
