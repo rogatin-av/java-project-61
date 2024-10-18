@@ -18,6 +18,12 @@ public class App {
         System.out.print("Your choice: ");
 
         int choice = Integer.parseInt(scanner.next());
+        select(choice);
+
+        scanner.close();
+    }
+
+    private static void select(int choice) {
 
         switch (choice) {
             case 1:
@@ -36,9 +42,7 @@ public class App {
                 Engine.start(new Progression());
                 break;
             default:
-                // for checkstyle0
+                // checkstyle
         }
-
-        scanner.close();
     }
 }
