@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 public class Calc implements GameInterface {
     private int correctAnswer;
 
@@ -12,10 +14,10 @@ public class Calc implements GameInterface {
     }
 
     public String getQuestion() {
-        var a = (int) (Math.random() * 10);
-        var b = (int) (Math.random() * 10);
+        var a = Engine.generateRandomInRange(1, 99);
+        var b = Engine.generateRandomInRange(1, 99);
         char[] operators = {'*', '+', '-'};
-        var operator = operators[(int) (Math.random() * 3)];
+        var operator = operators[Engine.generateRandomInRange(0, 2)];
 
         setCorrectAnswer(a, b, operator);
 
