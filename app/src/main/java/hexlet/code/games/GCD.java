@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 public class GCD implements GameInterface {
     private int correctAnswer;
 
@@ -12,24 +14,13 @@ public class GCD implements GameInterface {
     }
 
     public String getQuestion() {
-        var a = (int) (Math.random() * 10);
-        var b = (int) (Math.random() * 10);
+        var a = Engine.generateRandomInRange(1, 99);
+        var b = Engine.generateRandomInRange(1, 99);
 
-        var res = gcd(a, b);
+        var res = Engine.gcd(a, b);
         setCorrectAnswer(res);
 
         return a + " " + b;
-    }
-
-    private int gcd(int a, int b) {
-
-        while (b != 0) {
-            int tmp = a % b;
-            a = b;
-            b = tmp;
-        }
-
-        return a;
     }
 
     private void setCorrectAnswer(int num) {
