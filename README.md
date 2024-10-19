@@ -7,3 +7,5 @@
 [![asciicast](https://asciinema.org/a/ISppgD0AbVfCsuPKLmq4Tb9cO.svg)](https://asciinema.org/a/ISppgD0AbVfCsuPKLmq4Tb9cO)
 ### GCD Game example:
 [![asciicast](https://asciinema.org/a/s6r8orzeGG8l9u5D0F4NKhzKm.svg)](https://asciinema.org/a/s6r8orzeGG8l9u5D0F4NKhzKm)
+### Progression Game example:
+[![asciicast](https://asciinema.org/a/ipPgDIzc2gQvTcvbkFXHdXfOl.svg)](https://asciinema.org/a/ipPgDIzc2gQvTcvbkFXHdXfOl)
