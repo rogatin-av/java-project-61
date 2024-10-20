@@ -9,3 +9,5 @@
 [![asciicast](https://asciinema.org/a/s6r8orzeGG8l9u5D0F4NKhzKm.svg)](https://asciinema.org/a/s6r8orzeGG8l9u5D0F4NKhzKm)
 ### Progression Game example:
 [![asciicast](https://asciinema.org/a/ipPgDIzc2gQvTcvbkFXHdXfOl.svg)](https://asciinema.org/a/ipPgDIzc2gQvTcvbkFXHdXfOl)
+### Prime Game example:
+[![asciicast](https://asciinema.org/a/BnzgJDKd3MVAtU33nbT9gYccC.svg)](https://asciinema.org/a/BnzgJDKd3MVAtU33nbT9gYccC)
