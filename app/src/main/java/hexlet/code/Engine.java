@@ -73,4 +73,13 @@ public class Engine {
     public static int generateRandomInRange(int start, int end) {
         return (int) (Math.random() * (end - start + 1) + start);
     }
+
+    public static String primeChecker(int num) {
+        for (var i = 2; i < num / 2; i++) {
+            if (num % i == 0) {
+                return "no";
+            }
+        }
+        return "yes";
+    }
 }
