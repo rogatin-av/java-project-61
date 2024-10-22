@@ -49,7 +49,7 @@ public class Engine {
                 var wrong = "'" + userAnswer + "' is wrong answer ;(.";
                 var correct = "Correct answer was '" + game.getCorrectAnswer() + "'.";
                 System.out.println(wrong + " " + correct);
-                System.out.println("Let's try again, " + userName);
+                System.out.println("Let's try again, " + userName + "!");
                 break;
             }
         }
