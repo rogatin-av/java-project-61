@@ -1,6 +1,11 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Cli;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 import java.util.Scanner;
 
@@ -18,31 +23,31 @@ public class App {
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
 
-        int choice = Integer.parseInt(scanner.next());
+        String choice = scanner.next();
         select(choice);
 
         scanner.close();
     }
 
-    private static void select(int choice) {
+    private static void select(String choice) {
 
         switch (choice) {
-            case 1:
+            case "1":
                 Cli.greeting();
                 break;
-            case 2:
+            case "2":
                 Engine.start(new Even());
                 break;
-            case 3:
+            case "3":
                 Engine.start(new Calc());
                 break;
-            case 4:
+            case "4":
                 Engine.start(new GCD());
                 break;
-            case 5:
+            case "5":
                 Engine.start(new Progression());
                 break;
-            case 6:
+            case "6":
                 Engine.start(new Prime());
                 break;
             default:
