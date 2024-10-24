@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class Calc implements GameInterface {
+public final class Calc implements GameInterface {
     private int correctAnswer;
 
     public String getCorrectAnswer() {
@@ -14,10 +14,14 @@ public class Calc implements GameInterface {
     }
 
     public String getQuestion() {
-        var a = Engine.generateRandomInRange(1, 99);
-        var b = Engine.generateRandomInRange(1, 99);
+        final int minValue = 1;
+        final int maxValue = 99;
+        var a = Engine.generateRandomInRange(minValue, maxValue);
+        var b = Engine.generateRandomInRange(minValue, maxValue);
         char[] operators = {'*', '+', '-'};
-        var operator = operators[Engine.generateRandomInRange(0, 2)];
+        final int startOfOps = 0;
+        final int endOfOps = 2;
+        var operator = operators[Engine.generateRandomInRange(startOfOps, endOfOps)];
 
         setCorrectAnswer(a, b, operator);
 
