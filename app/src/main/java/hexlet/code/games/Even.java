@@ -14,9 +14,9 @@ public final class Even implements GameInterface {
     }
 
     public String getQuestion() {
-        var start = 1;
-        var end = 99;
-        var num = Engine.generateRandomInRange(start, end);
+        final int minValue = 1;
+        final int maxValue = 99;
+        var num = Engine.generateRandomInRange(minValue, maxValue);
 
         setCorrectAnswer(num);
 
