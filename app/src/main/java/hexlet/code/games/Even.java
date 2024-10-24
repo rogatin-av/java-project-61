@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class Even implements GameInterface {
+public final class Even implements GameInterface {
     private String correctAnswer;
 
     public String getCorrectAnswer() {
@@ -14,7 +14,9 @@ public class Even implements GameInterface {
     }
 
     public String getQuestion() {
-        var num = Engine.generateRandomInRange(1, 99);
+        var start = 1;
+        var end = 99;
+        var num = Engine.generateRandomInRange(start, end);
 
         setCorrectAnswer(num);
 
