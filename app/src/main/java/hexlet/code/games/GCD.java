@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class GCD implements GameInterface {
+public final class GCD implements GameInterface {
     private int correctAnswer;
 
     public String getCorrectAnswer() {
@@ -14,8 +14,10 @@ public class GCD implements GameInterface {
     }
 
     public String getQuestion() {
-        var a = Engine.generateRandomInRange(1, 99);
-        var b = Engine.generateRandomInRange(1, 99);
+        final int minValue = 1;
+        final int maxValue = 99;
+        var a = Engine.generateRandomInRange(minValue, maxValue);
+        var b = Engine.generateRandomInRange(minValue, maxValue);
 
         var res = Engine.gcd(a, b);
         setCorrectAnswer(res);
