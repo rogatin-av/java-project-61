@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 import java.util.StringJoiner;
 
-public class Progression implements GameInterface {
+public final class Progression implements GameInterface {
     private int correctAnswer;
 
     public String getCorrectAnswer() {
@@ -16,8 +16,13 @@ public class Progression implements GameInterface {
     }
 
     public String getQuestion() {
-        int length = Engine.generateRandomInRange(5, 10);
-        int step = Engine.generateRandomInRange(2, 5);
+
+        final int minLength = 5;
+        final int maxLength = 10;
+        int length = Engine.generateRandomInRange(minLength, maxLength);
+        final int minStep = 2;
+        final int maxStep = 5;
+        int step = Engine.generateRandomInRange(minStep, maxStep);
         int hiddenNum = Engine.generateRandomInRange(1, length);
         int currentNum = 1;
         var res = new StringJoiner(" ");
