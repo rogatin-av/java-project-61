@@ -9,7 +9,7 @@ public class Engine {
     private static GameInterface game;
     private static String userName = "Guest";
     private static boolean isWin = true;
-    private static final int questCount = 3;
+    private static final int QUEST_COUNT = 3;
 
     public static void start(GameInterface currentGame) {
         game = currentGame;
@@ -35,7 +35,7 @@ public class Engine {
 
     private static void play() {
 
-        for (var i = 1; i <= questCount; i++) {
+        for (var i = 1; i <= QUEST_COUNT; i++) {
 
             System.out.println("Question: " + game.getQuestion());
             System.out.print("Your answer: ");
