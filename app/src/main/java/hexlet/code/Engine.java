@@ -9,15 +9,15 @@ public class Engine {
     private static GameInterface game;
     private static String userName = "Guest";
     private static boolean isWin = true;
+    private static final int questCount = 3;
 
     public static void start(GameInterface currentGame) {
-        var questCount = 3;
         game = currentGame;
         scanner = new Scanner(System.in);
 
         greeting();
         showCondition();
-        play(questCount);
+        play();
 
         scanner.close();
     }
@@ -33,7 +33,7 @@ public class Engine {
         System.out.println(game.getCondition());
     }
 
-    private static void play(int questCount) {
+    private static void play() {
 
         for (var i = 1; i <= questCount; i++) {
 
