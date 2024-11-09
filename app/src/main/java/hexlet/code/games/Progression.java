@@ -1,50 +1,51 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.utils.MathUtils;
 
 import java.util.StringJoiner;
 
-public final class Progression implements GameInterface {
-    private int correctAnswer;
+public class Progression {
+    private static String correctAnswer;
 
-    public String getCorrectAnswer() {
-        return correctAnswer + "";
+    public static void start() {
+        var condition = "What number is missing in the progression?";
+        final int questCount = 3;
+        var isWin = true;
+        Engine.greeting(condition);
+        for (int i = 1; i <= questCount; i++) {
+            isWin = Engine.play(getQuestion(), correctAnswer);
+            if (isWin) {
+                Engine.showCorrectMessage();
+            } else {
+                Engine.showWrongMessage();
+                break;
+            }
+        }
+        if (isWin) {
+            Engine.showCongratulations();
+        }
     }
 
-    public String getCondition() {
-        return "What number is missing in the progression?";
-    }
-
-    public String getQuestion() {
-
+    private static String getQuestion() {
         final int minLength = 5;
         final int maxLength = 10;
-        int length = Engine.generateRandomInRange(minLength, maxLength);
+        int length = MathUtils.generateRandomInRange(minLength, maxLength);
         final int minStep = 2;
         final int maxStep = 5;
-        int step = Engine.generateRandomInRange(minStep, maxStep);
-        int hiddenNum = Engine.generateRandomInRange(1, length);
+        int step = MathUtils.generateRandomInRange(minStep, maxStep);
+        int hiddenNum = MathUtils.generateRandomInRange(1, length);
         int currentNum = 1;
         var res = new StringJoiner(" ");
-
         for (var i = 1; i <= length; i++) {
             if (i == hiddenNum) {
                 res.add("..");
-                setCorrectAnswer(currentNum);
-            }  else {
+                correctAnswer = String.valueOf(currentNum);
+            } else {
                 res.add(String.valueOf(currentNum));
             }
             currentNum += step;
         }
-
         return res.toString();
-    }
-
-    private void setCorrectAnswer(int num) {
-        correctAnswer = num;
-    }
-
-    public boolean checkAnswer(String userAnswer) {
-        return correctAnswer == Integer.parseInt(userAnswer);
     }
 }

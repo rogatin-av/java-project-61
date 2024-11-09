@@ -1,85 +1,46 @@
 package hexlet.code;
 
-import hexlet.code.games.GameInterface;
-
 import java.util.Scanner;
 
 public class Engine {
     private static Scanner scanner;
-    private static GameInterface game;
-    private static String userName = "Guest";
-    private static boolean isWin = true;
-    private static final int QUEST_COUNT = 3;
+    private static String userName;
+    private static String userAnswer;
+    private static String correctAnswer;
 
-    public static void start(GameInterface currentGame) {
-        game = currentGame;
+    public static void greeting(String condition) {
         scanner = new Scanner(System.in);
-
-        greeting();
-        showCondition();
-        play();
-
-        scanner.close();
-    }
-
-    private static void greeting() {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
+        System.out.println(condition);
     }
 
-    private static void showCondition() {
-        System.out.println(game.getCondition());
+    public static boolean play(String question, String correctAns) {
+        correctAnswer = correctAns;
+        System.out.println("Question: " + question);
+        System.out.print("Your answer: ");
+        userAnswer = scanner.next();
+        return userAnswer.equals(correctAnswer);
     }
 
-    private static void play() {
-
-        for (var i = 1; i <= QUEST_COUNT; i++) {
-
-            System.out.println("Question: " + game.getQuestion());
-            System.out.print("Your answer: ");
-            String userAnswer = scanner.next();
-
-            isWin = game.checkAnswer(userAnswer);
-
-            if (isWin) {
-                System.out.println("Correct!");
-            } else {
-                var wrong = "'" + userAnswer + "' is wrong answer ;(.";
-                var correct = "Correct answer was '" + game.getCorrectAnswer() + "'.";
-                System.out.println(wrong + " " + correct);
-                System.out.println("Let's try again, " + userName + "!");
-                break;
-            }
-        }
-
-        if (isWin) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+    public static void showCorrectMessage() {
+        System.out.println("Correct!");
     }
 
-    public static int gcd(int a, int b) {
-
-        while (b != 0) {
-            int tmp = a % b;
-            a = b;
-            b = tmp;
-        }
-
-        return a;
+    public static void showWrongMessage() {
+        scanner.close();
+        var message = new StringBuilder();
+        message.append("'").append(userAnswer);
+        message.append("' is wrong answer ;(.Correct answer was '");
+        message.append(correctAnswer).append("'.\n");
+        message.append("Let's try again, ").append(userName).append("!");
+        System.out.println(message);
     }
 
-    public static int generateRandomInRange(int start, int end) {
-        return (int) (Math.random() * (end - start + 1) + start);
-    }
-
-    public static String primeChecker(int num) {
-        for (var i = 2; i < num / 2; i++) {
-            if (num % i == 0) {
-                return "no";
-            }
-        }
-        return "yes";
+    public static void showCongratulations() {
+        scanner.close();
+        System.out.println("Congratulations, " + userName + "!");
     }
 }
