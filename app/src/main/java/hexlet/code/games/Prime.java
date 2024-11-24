@@ -4,32 +4,30 @@ import hexlet.code.Engine;
 import hexlet.code.utils.MathUtils;
 
 public class Prime {
-    private static String correctAnswer;
 
     public static void start() {
         var condition = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        final int questCount = 3;
-        var isWin = true;
-        Engine.greeting(condition);
-        for (int i = 1; i <= questCount; i++) {
-            isWin = Engine.play(getQuestion(), correctAnswer);
-            if (isWin) {
-                Engine.showCorrectMessage();
-            } else  {
-                Engine.showWrongMessage();
-                break;
-            }
+        var questions = new String[Engine.NUM_OF_ROUNDS];
+        var answers = new String[Engine.NUM_OF_ROUNDS];
+        for (int i = 0; i < Engine.NUM_OF_ROUNDS; i++) {
+            var gameData = getQuestionAndAnswer();
+            questions[i] = gameData[0];
+            answers[i] = gameData[1];
         }
-        if (isWin) {
-            Engine.showCongratulations();
-        }
+        Engine.play(condition, questions, answers);
     }
 
-    private static String getQuestion() {
+    private static String[] getQuestionAndAnswer() {
+        var res = new String[2];
         final int minValue = 2;
         final int maxValue = 99;
         var num = MathUtils.generateRandomInRange(minValue, maxValue);
-        correctAnswer = MathUtils.primeChecker(num) ? "yes" : "no";
-        return num + "";
+        res[0] = String.valueOf(num);
+        res[1] = getAnswer(num);
+        return res;
+    }
+
+    private static String getAnswer(int num) {
+        return MathUtils.primeChecker(num) ? "yes" : "no";
     }
 }

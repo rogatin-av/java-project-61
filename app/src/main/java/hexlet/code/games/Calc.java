@@ -4,49 +4,49 @@ import hexlet.code.Engine;
 import hexlet.code.utils.MathUtils;
 
 public class Calc {
-    private static String correctAnswer;
 
     public static void start() {
         var condition = "What is the result of the expression?";
-        final int questCount = 3;
-        var isWin = true;
-        Engine.greeting(condition);
-        for (int i = 1; i <= questCount; i++) {
-            isWin = Engine.play(getQuestion(), correctAnswer);
-            if (isWin) {
-                Engine.showCorrectMessage();
-            } else  {
-                Engine.showWrongMessage();
-                break;
-            }
+        var questions = new String[Engine.NUM_OF_ROUNDS];
+        var answers = new String[Engine.NUM_OF_ROUNDS];
+        for (int i = 0; i < Engine.NUM_OF_ROUNDS; i++) {
+            var gameData = getQuestionAndAnswer();
+            questions[i] = gameData[0];
+            answers[i] = gameData[1];
         }
-        if (isWin) {
-            Engine.showCongratulations();
-        }
+        Engine.play(condition, questions, answers);
     }
 
-    private static String getQuestion() {
+    private static String[] getQuestionAndAnswer() {
+        var res = new String[2];
         final int minValue = 1;
         final int maxValue = 99;
         var a = MathUtils.generateRandomInRange(minValue, maxValue);
         var b = MathUtils.generateRandomInRange(minValue, maxValue);
-        char[] operators = {'*', '+', '-'};
+        String[] operators = {"*", "+", "-"};
         final int startOfOps = 0;
         final int endOfOps = 2;
         var operator = operators[MathUtils.generateRandomInRange(startOfOps, endOfOps)];
+        res[0] =  a + " " + operator + " " + b;
+        res[1] = getAnswer(a, b, operator);
+        return res;
+    }
+
+    private static String getAnswer(int a, int b, String operator) {
+        var res = "";
         switch (operator) {
-            case '*':
-                correctAnswer = String.valueOf(a * b);
+            case "*":
+                res += a * b;
                 break;
-            case '+':
-                correctAnswer = String.valueOf(a + b);
+            case "+":
+                res += a + b;
                 break;
-            case '-':
-                correctAnswer = String.valueOf(a - b);
+            case "-":
+                res += a - b;
                 break;
             default:
                 System.out.println("Wrong operator: " + operator);
         }
-        return a + " " + operator + " " + b;
+        return res;
     }
 }
