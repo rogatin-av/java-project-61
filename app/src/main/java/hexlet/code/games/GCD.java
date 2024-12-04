@@ -4,31 +4,37 @@ import hexlet.code.Engine;
 import hexlet.code.utils.MathUtils;
 
 public class GCD {
+    private static final String CONDITION = "Find the greatest common divisor of given numbers.";
 
     public static void start() {
-        var condition = "Find the greatest common divisor of given numbers.";
-        var questions = new String[Engine.NUM_OF_ROUNDS];
-        var answers = new String[Engine.NUM_OF_ROUNDS];
+        String[][] gameData = new String[Engine.NUM_OF_ROUNDS][2];
         for (int i = 0; i < Engine.NUM_OF_ROUNDS; i++) {
-            var gameData = getQuestionAndAnswer();
-            questions[i] = gameData[0];
-            answers[i] = gameData[1];
+            gameData[i] = getQuestionAndAnswer();
         }
-        Engine.play(condition, questions, answers);
+        Engine.play(CONDITION, gameData);
     }
 
     private static String[] getQuestionAndAnswer() {
-        var res = new String[2];
+        String[] res = new String[2];
         final int minValue = 1;
         final int maxValue = 99;
-        var a = MathUtils.generateRandomInRange(minValue, maxValue);
-        var b = MathUtils.generateRandomInRange(minValue, maxValue);
+        int a = MathUtils.generateRandomInRange(minValue, maxValue);
+        int b = MathUtils.generateRandomInRange(minValue, maxValue);
         res[0] = a + " " + b;
         res[1] = getAnswer(a, b);
         return res;
     }
 
     private static String getAnswer(int a, int b) {
-        return String.valueOf(MathUtils.gcd(a, b));
+        return String.valueOf(gcd(a, b));
+    }
+
+    private static int gcd(int a, int b) {
+        while (b != 0) {
+            int tmp = a % b;
+            a = b;
+            b = tmp;
+        }
+        return a;
     }
 }

@@ -6,17 +6,14 @@ import hexlet.code.utils.MathUtils;
 import java.util.StringJoiner;
 
 public class Progression {
+    private static final String CONDITION = "What number is missing in the progression?";
 
     public static void start() {
-        var condition = "What number is missing in the progression?";
-        var questions = new String[Engine.NUM_OF_ROUNDS];
-        var answers = new String[Engine.NUM_OF_ROUNDS];
+        String[][] gameData = new String[Engine.NUM_OF_ROUNDS][2];
         for (int i = 0; i < Engine.NUM_OF_ROUNDS; i++) {
-            var gameData = getQuestionAndAnswer();
-            questions[i] = gameData[0];
-            answers[i] = gameData[1];
+            gameData[i] = getQuestionAndAnswer();
         }
-        Engine.play(condition, questions, answers);
+        Engine.play(CONDITION, gameData);
     }
 
     private static String[] getQuestionAndAnswer() {
@@ -31,10 +28,10 @@ public class Progression {
     }
 
     private static String[] getProgression(int length, int step, int hiddenNum) {
-        var res = new String[2];
+        String[] res = new String[2];
         int currentNum = 1;
-        var progression = new StringJoiner(" ");
-        for (var i = 1; i <= length; i++) {
+        StringJoiner progression = new StringJoiner(" ");
+        for (int i = 1; i <= length; i++) {
             if (i == hiddenNum) {
                 progression.add("..");
                 res[1] = String.valueOf(currentNum);

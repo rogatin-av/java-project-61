@@ -4,36 +4,37 @@ import hexlet.code.Engine;
 import hexlet.code.utils.MathUtils;
 
 public class Calc {
+    private static final String CONDITION = "What is the result of the expression?";
 
     public static void start() {
-        var condition = "What is the result of the expression?";
-        var questions = new String[Engine.NUM_OF_ROUNDS];
-        var answers = new String[Engine.NUM_OF_ROUNDS];
+        String[][] gameData = new String[Engine.NUM_OF_ROUNDS][2];
         for (int i = 0; i < Engine.NUM_OF_ROUNDS; i++) {
-            var gameData = getQuestionAndAnswer();
-            questions[i] = gameData[0];
-            answers[i] = gameData[1];
+            gameData[i] = getQuestionAndAnswer();
         }
-        Engine.play(condition, questions, answers);
+        Engine.play(CONDITION, gameData);
     }
 
     private static String[] getQuestionAndAnswer() {
-        var res = new String[2];
+        String[] res = new String[2];
         final int minValue = 1;
         final int maxValue = 99;
-        var a = MathUtils.generateRandomInRange(minValue, maxValue);
-        var b = MathUtils.generateRandomInRange(minValue, maxValue);
-        String[] operators = {"*", "+", "-"};
-        final int startOfOps = 0;
-        final int endOfOps = 2;
-        var operator = operators[MathUtils.generateRandomInRange(startOfOps, endOfOps)];
+        int a = MathUtils.generateRandomInRange(minValue, maxValue);
+        int b = MathUtils.generateRandomInRange(minValue, maxValue);
+        String operator = getOperator();
         res[0] =  a + " " + operator + " " + b;
         res[1] = getAnswer(a, b, operator);
         return res;
     }
 
+    private static String getOperator() {
+        String[] operators = {"*", "+", "-"};
+        final int startOfOps = 0;
+        final int endOfOps = 2;
+        return operators[MathUtils.generateRandomInRange(startOfOps, endOfOps)];
+    }
+
     private static String getAnswer(int a, int b, String operator) {
-        var res = "";
+        String res = "";
         switch (operator) {
             case "*":
                 res += a * b;

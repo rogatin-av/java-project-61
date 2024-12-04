@@ -6,15 +6,15 @@ public class Engine {
     private static Scanner scanner;
     public static final int NUM_OF_ROUNDS = 3;
 
-    public static void play(String condition, String[] questions, String[] correctAns) {
+    public static void play(String condition, String[][] gameData) {
         scanner = new Scanner(System.in);
-        var isWin = true;
-        var userName = greeting();
+        boolean isWin = true;
+        String userName = greeting();
         showCondition(condition);
         for (int i = 0; i < NUM_OF_ROUNDS; i++) {
-            var correctAnswer = correctAns[i];
-            var question = questions[i];
-            var userAnswer = askQuestion(question);
+            String question = gameData[i][0];
+            String correctAnswer = gameData[i][1];
+            String userAnswer = askQuestion(question);
             if (userAnswer.equals(correctAnswer)) {
                 showCorrectMessage();
             } else {
@@ -32,7 +32,7 @@ public class Engine {
     private static String greeting() {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        var userName = scanner.next();
+        String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
         return userName;
     }
@@ -42,11 +42,9 @@ public class Engine {
     }
 
     private static String askQuestion(String question) {
-        var userAnswer = "";
         System.out.println("Question: " + question);
         System.out.print("Your answer: ");
-        userAnswer = scanner.next();
-        return userAnswer;
+        return scanner.next();
     }
 
     private static void showCorrectMessage() {
@@ -55,7 +53,7 @@ public class Engine {
 
     private static void showWrongMessage(String userName, String userAnswer, String correctAnswer) {
         scanner.close();
-        var message = new StringBuilder();
+        StringBuilder message = new StringBuilder();
         message.append("'").append(userAnswer);
         message.append("' is wrong answer ;(.Correct answer was '");
         message.append(correctAnswer).append("'.\n");
