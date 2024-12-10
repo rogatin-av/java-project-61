@@ -9,11 +9,11 @@ public class Progression {
     private static final String CONDITION = "What number is missing in the progression?";
 
     public static void start() {
-        String[][] gameData = new String[Engine.NUM_OF_ROUNDS][2];
+        String[][] questAndAnsProgPairs = new String[Engine.NUM_OF_ROUNDS][2];
         for (int i = 0; i < Engine.NUM_OF_ROUNDS; i++) {
-            gameData[i] = getQuestionAndAnswer();
+            questAndAnsProgPairs[i] = getQuestionAndAnswer();
         }
-        Engine.play(CONDITION, gameData);
+        Engine.play(CONDITION, questAndAnsProgPairs);
     }
 
     private static String[] getQuestionAndAnswer() {

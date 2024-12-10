@@ -6,14 +6,14 @@ public class Engine {
     private static Scanner scanner;
     public static final int NUM_OF_ROUNDS = 3;
 
-    public static void play(String condition, String[][] gameData) {
+    public static void play(String condition, String[][] questAndAnsPairs) {
         scanner = new Scanner(System.in);
         boolean isWin = true;
         String userName = greeting();
         showCondition(condition);
         for (int i = 0; i < NUM_OF_ROUNDS; i++) {
-            String question = gameData[i][0];
-            String correctAnswer = gameData[i][1];
+            String question = questAndAnsPairs[i][0];
+            String correctAnswer = questAndAnsPairs[i][1];
             String userAnswer = askQuestion(question);
             if (userAnswer.equals(correctAnswer)) {
                 showCorrectMessage();

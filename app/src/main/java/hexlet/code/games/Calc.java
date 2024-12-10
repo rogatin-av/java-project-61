@@ -1,25 +1,24 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.data.GameConsts;
 import hexlet.code.utils.MathUtils;
 
 public class Calc {
     private static final String CONDITION = "What is the result of the expression?";
 
     public static void start() {
-        String[][] gameData = new String[Engine.NUM_OF_ROUNDS][2];
+        String[][] questAndAnsCalcPairs = new String[Engine.NUM_OF_ROUNDS][2];
         for (int i = 0; i < Engine.NUM_OF_ROUNDS; i++) {
-            gameData[i] = getQuestionAndAnswer();
+            questAndAnsCalcPairs[i] = getQuestionAndAnswer();
         }
-        Engine.play(CONDITION, gameData);
+        Engine.play(CONDITION, questAndAnsCalcPairs);
     }
 
     private static String[] getQuestionAndAnswer() {
         String[] res = new String[2];
-        final int minValue = 1;
-        final int maxValue = 99;
-        int a = MathUtils.generateRandomInRange(minValue, maxValue);
-        int b = MathUtils.generateRandomInRange(minValue, maxValue);
+        int a = MathUtils.generateRandomInRange(GameConsts.MIN_VALUE, GameConsts.MAX_VALUE);
+        int b = MathUtils.generateRandomInRange(GameConsts.MIN_VALUE, GameConsts.MAX_VALUE);
         String operator = getOperator();
         res[0] =  a + " " + operator + " " + b;
         res[1] = getAnswer(a, b, operator);
